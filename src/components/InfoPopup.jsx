@@ -36,14 +36,16 @@ const PopupOverlay = styled.div`
 `;
 
 const PopupContent = styled.div`
-  background-color: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   padding: 24px;
-  border-radius: 12px;
+  border-radius: 24px;
   width: 90%;
   max-width: 500px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
   position: relative;
   animation: ${slideIn} 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 const CloseButton = styled.button`
@@ -54,16 +56,20 @@ const CloseButton = styled.button`
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #666;
+  color: #6B7280;
   padding: 4px;
+  transition: all 0.3s ease;
   
   &:hover {
-    color: #333;
+    color: #1E40AF;
+    transform: scale(1.1);
   }
 `;
 
 const Title = styled.h2`
-  color: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 24px;
   margin-bottom: 20px;
 `;
@@ -78,29 +84,33 @@ const TextArea = styled.textarea`
   width: 100%;
   min-height: 120px;
   padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
   font-size: 14px;
   resize: vertical;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   
   &:focus {
     outline: none;
-    border-color: #061380;
-  }
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 `;
 
 const SaveButton = styled.button`
-  background-color: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
   color: white;
   border: none;
   padding: 12px 24px;
-  border-radius: 24px;
+  border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
   
   &:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
   }
 `;
 

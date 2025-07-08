@@ -4,16 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import { getProfiles } from '../fakeApi.js'; 
 
 const placeholderColors = {
-    background: '#F0F6F9',
+    background: '#FAFBFC',
     cardBackground: '#ffffff',
     textPrimary: '#1e1e1e', // Usaremos esta cor para o texto preto
     textSecondary: '#555555',
-    buttonBlue: '#0033A0',
-    lightBlueBg: '#D6EDFF',
+    buttonBlue: '#2563EB',
+    lightBlueBg: '#EFF6FF',
     avatarBg: '#71C9CE',
-    goldCard: '#FFE866',
-    silverCard: '#E8E8E8',
-    bronzeCard: '#FFAE4D',
+    goldCard: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+    silverCard: 'linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%)',
+    bronzeCard: 'linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)',
     buttonTextColor: '#ffffff',
     borderColor: '#e0e0e0',
     purpleAccent: '#BD54E3',
@@ -21,8 +21,8 @@ const placeholderColors = {
     medalRed: '#FF5252',
     medalBlue: '#2196F3',
     cardSeparator: '#385AB5',
-    topBarBlue: '#06137A',
-    navyButtonBg: '#06137A',
+    topBarBlue: '#1E40AF',
+    navyButtonBg: '#1E40AF',
 };
 
 const FullScreenWrapper = styled.div`
@@ -31,7 +31,7 @@ const FullScreenWrapper = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to bottom right, #E6E9F5 0%, #E6E9F5 20%, #FFFFFF 60%, #FFFFFF 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     overflow-y: auto;
     z-index: 0;
 `;
@@ -58,20 +58,23 @@ const PageWrapper = styled.div`
 const ContentContainer = styled.div`
     width: 100%;
     max-width: 1000px;
+    position: relative;
 `;
 
 const TopBar = styled.header`
-    background-color: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
     height: 80px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
-    box-shadow: 0 3px 8px rgba(0, 51, 160, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     padding: 0 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 const Logo = styled.div`
@@ -85,10 +88,13 @@ const LogoImage = styled.img`
     margin-right: 12px;
     object-fit: cover;
     border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(6, 19, 128, 0.3);
 `;
 
 const LogoText = styled.h1`
-    color: #061380;
+    background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 1.5rem;
     font-weight: bold;
 `;
@@ -99,28 +105,48 @@ const NavLinks = styled.nav`
 `;
 
 const NavLink = styled.a`
-    color: #061380;
+    color: #1E40AF;
     font-weight: 500;
     margin-left: 24px;
     text-decoration: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
     
     &:hover {
-        text-decoration: underline;
+        color: #7C3AED;
+        
+        &::after {
+            width: 100%;
+        }
     }
 `;
 
 const SearchBar = styled.div`
     display: flex;
     align-items: center;
-    background-color: ${placeholderColors.lightBlueBg};
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
     padding: 8px 15px;
     margin-bottom: 20px;
-    color: ${placeholderColors.buttonBlue};
+    color: #1E40AF;
     width: 100%;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     
     @media (max-width: 480px) {
         padding: 7px 12px;
@@ -131,7 +157,7 @@ const SearchIcon = styled.div`
     margin-right: 10px;
     display: flex;
     align-items: center;
-    color: ${placeholderColors.buttonBlue};
+    color: #1E40AF;
     
     svg {
         width: 16px;
@@ -141,22 +167,22 @@ const SearchIcon = styled.div`
 
 const SearchInput = styled.input`
     flex-grow: 1;
-    color: ${placeholderColors.textSecondary};
+    color: #374151;
     font-size: 0.9em;
     border: none;
     background: transparent;
     outline: none;
     
     &::placeholder {
-        color: ${placeholderColors.textSecondary};
+        color: #9CA3AF;
     }
 `;
 
 const AddButton = styled.button`
-    background-color: ${placeholderColors.buttonBlue};
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 50%;
     width: 24px;
     height: 24px;
     display: flex;
@@ -164,11 +190,12 @@ const AddButton = styled.button`
     justify-content: center;
     cursor: pointer;
     margin-left: 10px;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
     
     &:hover {
-        opacity: 0.9;
-        transform: scale(1.05);
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
     }
     
     svg {
@@ -186,11 +213,13 @@ const TopSection = styled.section`
 const TopSectionTitle = styled.h2`
     font-size: 1.8em;
     font-weight: bold;
-    color: #061380;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 30px;
     text-align: center;
     width: 100%;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -231,10 +260,10 @@ const CardsContainer = styled.div`
 
 const MedalBadge = styled.div`
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 50px;
-    height: 60px;
+    top: -10px;
+    left: -10px;
+    width: 60px;
+    height: 70px;
     z-index: 5;
     
     img {
@@ -251,28 +280,31 @@ const MedalBadge = styled.div`
 
 const EJCard = styled.div`
     background: ${({ rank }) =>
-        rank === 1 ? 'linear-gradient(to bottom, #FFF3AA 0%, #FFDE4D 100%)' :
-        rank === 2 ? 'linear-gradient(to bottom, #F5F5F5 0%, #E0E0E0 100%)' :
-        rank === 3 ? 'linear-gradient(to bottom, #FFBF7A 0%, #FFA645 100%)' :
+        rank === 1 ? 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)' :
+        rank === 2 ? 'linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%)' :
+        rank === 3 ? 'linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)' :
         placeholderColors.cardBackground};
-    border-radius: 10px;
+    border-radius: 24px;
     padding: 18px;
     text-align: center;
     color: ${placeholderColors.textPrimary};
     width: 100%;
     max-width: 280px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     transform: ${({ rank }) => rank === 1 ? 'translateY(-20px) scale(1.03)' : 'scale(1.03)'};
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
     z-index: ${({ rank }) => rank === 1 ? '2' : '1'};
     overflow: visible;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     
     &:hover {
-        transform: ${({ rank }) => rank === 1 ? 'translateY(-20px) scale(1.05)' : 'scale(1.05)'};
+        transform: ${({ rank }) => rank === 1 ? 'translateY(-25px) scale(1.08)' : 'translateY(-5px) scale(1.08)'};
+        box-shadow: 0 25px 50px rgba(0,0,0,0.2);
     }
     
     @media (max-width: 992px) {
@@ -363,7 +395,7 @@ const CardAvatarContainer = styled.div`
     position: relative;
     overflow: hidden;
     background-color: #71C9CE;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     
     @media (max-width: 480px) {
         width: ${props => ['1', '2', '3'].includes(props.rank?.toString()) ? '80px' : '60px'};
@@ -417,7 +449,7 @@ const CardPointsLabel = styled.div`
 const CardSeparator = styled.hr`
     width: 90%;
     height: 2px;
-    background-color: ${placeholderColors.cardSeparator};
+    background: linear-gradient(90deg, transparent, ${placeholderColors.cardSeparator}, transparent);
     margin: 8px 0;
     border: none;
 `;
@@ -435,8 +467,8 @@ const CardEJName = styled.div`
 
 const CardUniversity = styled.div`
     background-color: transparent;
-    border: 1px solid #333;
-    border-radius: 24px;
+    border: 2px solid rgba(51, 51, 51, 0.3);
+    border-radius: 50px;
     padding: 4px 14px;
     font-size: 0.85em;
     margin-bottom: 12px;
@@ -450,10 +482,10 @@ const CardUniversity = styled.div`
 `;
 
 const CardButton = styled.button`
-    background-color: ${placeholderColors.navyButtonBg};
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
     color: ${placeholderColors.buttonTextColor};
     border: none;
-    border-radius: 12px;
+    border-radius: 50px;
     padding: 8px 12px;
     font-weight: bold;
     font-size: 0.9em;
@@ -464,6 +496,13 @@ const CardButton = styled.button`
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
+    }
     
     svg {
         width: 18px;
@@ -491,13 +530,16 @@ const ListItem = styled.div`
     align-items: center;
     padding: 10px 15px;
     margin-bottom: 8px;
-    transition: all 0.2s ease;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     
     &:hover {
-        transform: translateX(3px);
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     }
     
     @media (max-width: 768px) {
@@ -527,6 +569,7 @@ const ListAvatarContainer = styled.div`
     position: relative;
     overflow: hidden;
     background-color: #71C9CE;
+    box-shadow: 0 4px 15px rgba(113, 201, 206, 0.3);
 `;
 
 const ListAvatar = styled.div`
@@ -574,14 +617,15 @@ const ListInfoSection = styled.div`
 
 const ListUniversity = styled.span`
     color: white;
-    background-color: #061380;
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
     padding: 5px 12px;
-    border-radius: 6px;
+    border-radius: 50px;
     font-size: 0.75em;
     text-align: center;
     white-space: nowrap;
     font-weight: 600;
     width: 100px;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
     
     @media (max-width: 480px) {
         font-size: 0.7em;
@@ -603,10 +647,10 @@ const ListPoints = styled.span`
 `;
 
 const ListButton = styled.button`
-    background-color: #061380;
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 50px;
     padding: 6px 15px;
     font-size: 0.8em;
     font-weight: 600;
@@ -616,6 +660,13 @@ const ListButton = styled.button`
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+    }
     
     svg {
         width: 22px;

@@ -36,14 +36,16 @@ const PopupOverlay = styled.div`
 `;
 
 const PopupContent = styled.div`
-  background-color: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   padding: 24px;
-  border-radius: 12px;
+  border-radius: 24px;
   width: 90%;
   max-width: 500px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
   position: relative;
   animation: ${slideIn} 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 const CloseButton = styled.button`
@@ -54,23 +56,27 @@ const CloseButton = styled.button`
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #666;
+  color: #6B7280;
   padding: 4px;
+  transition: all 0.3s ease;
   
   &:hover {
-    color: #333;
+    color: #1E40AF;
+    transform: scale(1.1);
   }
 `;
 
 const Title = styled.h2`
-  color: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 24px;
   margin-bottom: 20px;
 `;
 
 const TextContent = styled.div`
   font-size: 14px;
-  color: #333;
+  color: #374151;
   line-height: 1.5;
 `;
 

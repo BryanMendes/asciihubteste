@@ -13,32 +13,41 @@ const Page = styled.div`
   min-height: 100vh;
   width: 100%;
   padding: 100px 16px 32px;
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 `;
 
 const Container = styled.div`
   width: 100%;
   max-width: 900px;
-  background-color: #FFFFFF;
-  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
   padding: 32px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 const BackButton = styled.button`
   background: none;
-  color: #212529;
+  color: #374151;
   border: none;
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 20px;
   font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: #1E40AF;
+  }
 `;
 
 const Header = styled.div`
   margin-bottom: 32px;
   h1 {
-    color: #061380;
+    background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 28px;
     font-weight: 700;
   }
@@ -52,9 +61,10 @@ const CoverSection = styled.div`
 const CoverImage = styled.img`
   width: 100%;
   height: 180px;
-  background-color: #C7E8F5;
-  border-radius: 10px;
+  background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+  border-radius: 20px;
   object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
 
 const ProfilePhoto = styled.div`
@@ -67,9 +77,10 @@ const ProfileCircle = styled.div`
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background-color: rgba(5, 67, 94, 0.48);
+  background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
   border: 4px solid white;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   
   img {
     width: 100%;
@@ -83,7 +94,7 @@ const CameraIcon = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: rgb(87, 173, 94);
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   border-radius: 50%;
   width: 28px;
   height: 28px;
@@ -91,6 +102,13 @@ const CameraIcon = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  }
 `;
 
 const CoverButton = styled.div`
@@ -99,13 +117,20 @@ const CoverButton = styled.div`
   right: 16px;
 
   button {
-    background-color: #040A3D;
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
     color: rgb(255, 255, 255);
     border: none;
     padding: 8px 14px;
     font-size: 12px;
-    border-radius: 6px;
+    border-radius: 50px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+    }
   }
 `;
 
@@ -123,9 +148,11 @@ const FormSection = styled.div`
   h2 {
     font-size: 18px;
     font-weight: 600;
-    color: #212529;
+    background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 24px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
     padding-bottom: 8px;
   }
 `;
@@ -135,7 +162,7 @@ const FormGroup = styled.div`
 
   label {
     display: block;
-    color: #333;
+    color: #374151;
     font-size: 14px;
     margin-bottom: 6px;
     font-weight: 500;
@@ -144,18 +171,21 @@ const FormGroup = styled.div`
   input,
   textarea {
     width: 100%;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    background-color: rgba(248, 250, 252, 0.8);
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
     padding: 12px;
-    color: #333;
+    color: #374151;
     font-size: 14px;
     resize: vertical;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     
     &:focus {
       outline: none;
-      border-color: #061380;
-      background-color: white;
+      border-color: #3B82F6;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     }
   }
 
@@ -173,27 +203,37 @@ const ButtonGroup = styled.div`
 
   button {
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 50px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: all 0.3s ease;
     
     &:hover {
-        opacity: 0.9;
+        transform: translateY(-2px);
     }
   }
 
   .cancel {
-    background-color: #6c757d;
-    border: 1px solid #6c757d;
+    background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+    border: none;
     color: #fff;
+    box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(107, 114, 128, 0.4);
+    }
   }
 
   .save {
-    background-color: #040A3D;
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
     border: none;
     color: white;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
+    }
   }
 `;
 

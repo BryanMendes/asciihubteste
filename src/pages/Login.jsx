@@ -14,34 +14,26 @@ const Page = styled.div`
   font-family: 'Arial', sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
-  background: url('public/background.png');
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(79, 70, 229, 0.9) 50%, rgba(139, 92, 246, 0.85) 100%), 
+              url('public/background.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Adicionado para fixar o fundo */
+  background-attachment: fixed;
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #061380;
-    opacity: 0.8;
-    z-index: 0;
-  }
 `;
 
 const Container = styled.div`
-  background: white;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
   padding: 40px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
   position: relative;
   z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
   @media (max-width: 480px) {
     margin: 20px;
     padding: 30px 25px;
@@ -51,7 +43,9 @@ const Container = styled.div`
 const WelcomeText = styled.h1`
   font-size: 20px;
   font-weight: 600;
-  color: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   margin-bottom: 30px;
 `;
@@ -59,7 +53,9 @@ const WelcomeText = styled.h1`
 const SmallWelcomeText = styled.h2`
   font-size: 24px;
   font-weight: 600;
-  color: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   margin-bottom: 30px;
 `;
@@ -71,30 +67,34 @@ const LoginForm = styled.div`
 const ToggleContainer = styled.div`
   display: flex;
   margin-bottom: 20px;
-  background: #040a3d;
-  border-radius: 20px;
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+  border-radius: 50px;
   padding: 2px;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
 `;
 
 const ToggleOption = styled.div`
   padding: 8px 16px;
-  border-radius: 18px;
+  border-radius: 50px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #666;
 
   &.active {
-    background: #061380;
-    color: white;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: #1E40AF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
   &:not(.active):hover {
-    background: #061380;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
   }
 `;
 
@@ -105,7 +105,7 @@ const FormGroup = styled.div`
 const Label = styled.label`
   display: block;
   margin-bottom: 6px;
-  color: #333;
+  color: #374151;
   font-weight: 500;
   font-size: 14px;
 `;
@@ -113,22 +113,22 @@ const Label = styled.label`
 const Input = styled.input`
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 16px;
   padding: 12px 16px;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
+  border: 2px solid #E5E7EB;
   font-size: 14px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   &:focus {
     outline: none;
-    border-color: #1e3c72;
-    box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 
   &::placeholder {
-    color: #adb5bd;
+    color: #9CA3AF;
   }
 `;
 
@@ -145,7 +145,7 @@ const EyeIcon = styled.span`
   user-select: none;
   font-size: 16px;
   opacity: 0.6;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     opacity: 1;
@@ -168,7 +168,7 @@ const Checkbox = styled.input`
   margin-right: 8px;
   width: 16px;
   height: 16px;
-  accent-color: #061380;
+  accent-color: #3B82F6;
 `;
 
 const CheckboxLabel = styled.label`
@@ -179,11 +179,11 @@ const CheckboxLabel = styled.label`
 
 const ForgotPassword = styled.a`
   font-size: 14px;
-  color: #061380;
+  color: #3B82F6;
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     text-decoration: underline;
@@ -192,21 +192,21 @@ const ForgotPassword = styled.a`
 
 const LoginButton = styled.button`
   width: 100%;
-  background: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
   color: white;
   border: none;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 16px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
 
   &:hover {
-    background: #2a5298;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
   }
 
   &:active {
@@ -216,16 +216,17 @@ const LoginButton = styled.button`
 
 const RegisterText = styled.p`
   text-align: center;
-  color: #666;
+  color: #6B7280;
   font-size: 14px;
   margin: 0;
 `;
 
 const RegisterLink = styled.a`
-  color: #061380;
+  color: #3B82F6;
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   &:hover {
     text-decoration: underline;
@@ -237,6 +238,7 @@ const HorizontalFormGroup = styled.div`
   display: flex;
   gap: 15px; /* Espaço entre os campos */
   margin-bottom: 20px;
+  
 
   & > div {
     flex: 1; /* Faz com que cada FormGroup dentro ocupe o mesmo espaço */
