@@ -298,7 +298,7 @@ const LoginPage = () => {
                     placeholder="Entre com sua senha"
                   />
                   <EyeIcon onClick={() => setShowPassword(!showPassword)}>
-                    👁️
+                    {showPassword ? '●●●' : '○○○'}
                   </EyeIcon>
                 </PasswordContainer>
               </FormGroup>
@@ -390,7 +390,7 @@ const LoginPage = () => {
                         placeholder="Entre com a senha"
                       />
                       <EyeIcon onClick={() => setShowPassword(!showPassword)}>
-                        👁️
+                        {showPassword ? '●●●' : '○○○'}
                       </EyeIcon>
                     </PasswordContainer>
                   </FormGroup>
@@ -432,7 +432,7 @@ const LoginPage = () => {
                         placeholder="Entre com a senha"
                       />
                       <EyeIcon onClick={() => setShowPassword(!showPassword)}>
-                        👁️
+                        {showPassword ? '●●●' : '○○○'}
                       </EyeIcon>
                     </PasswordContainer>
                   </FormGroup>
