@@ -11,9 +11,12 @@ const Nav = styled.nav`
     width: 100%;
     padding: 0 40px;
     height: 80px;
-    background-color: white;
-    box-shadow: 0 3px 8px rgba(0, 51, 160, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     z-index: 100;
+    transition: all 0.3s ease;
 `;
 
 const LeftContainer = styled.div`
@@ -27,10 +30,13 @@ const Logo = styled.img`
     margin-right: 12px;
     object-fit: cover;
     border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(6, 19, 128, 0.3);
 `;
 
 const SiteName = styled.span`
-    color: #061380;
+    background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 1.5rem;
     font-weight: bold;
 `;
@@ -42,30 +48,48 @@ const LinksContainer = styled.div`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: #061380;
+    color: #1E40AF;
     font-weight: 500;
     margin-left: 24px;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
     
     &:hover {
-        text-decoration: underline;
+        color: #7C3AED;
+        
+        &::after {
+            width: 100%;
+        }
     }
 `;
 
 const LoginButton = styled.button`
     padding: 10px 30px;
-    background: #061380;
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
     border: none;
-    border-radius: 24px;
+    border-radius: 50px;
     color: white;
     font-weight: bold;
     margin-left: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
     
     &:hover {
-        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
     }
 `;
 

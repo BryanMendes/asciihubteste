@@ -25,16 +25,16 @@ const GlobalStyle = createGlobalStyle`
 // CORES PLACEHOLDER
 // ===============================================
 const placeholderColors = {
-  background: '#F0F6F9',
+  background: '#FAFBFC',
   cardBackground: '#ffffff',
   textPrimary: '#1e1e1e',
   textSecondary: '#555555',
-  buttonBlue: '#0033A0',
-  lightBlueBg: '#D6EDFF',
+  buttonBlue: '#2563EB',
+  lightBlueBg: '#EFF6FF',
   avatarBg: '#71C9CE',
-  goldCard: '#FFE866',
-  silverCard: '#E8E8E8',
-  bronzeCard: '#FFAE4D',
+  goldCard: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+  silverCard: 'linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%)',
+  bronzeCard: 'linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)',
   buttonTextColor: '#ffffff',
   borderColor: '#e0e0e0',
   purpleAccent: '#BD54E3',
@@ -42,8 +42,8 @@ const placeholderColors = {
   medalRed: '#FF5252',
   medalBlue: '#2196F3',
   cardSeparator: '#385AB5',
-  topBarBlue: '#06137A',
-  navyButtonBg: '#06137A',
+  topBarBlue: '#1E40AF',
+  navyButtonBg: '#1E40AF',
 };
 
 // ===============================================
@@ -53,7 +53,7 @@ const PageContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #e5e7eb;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 `;
 
 const MainContentWrapper = styled.main`
@@ -69,11 +69,11 @@ const MainContentWrapper = styled.main`
 // ===============================================
 const HeroSectionWrapper = styled.div`
   background: 
-    linear-gradient(to bottom right, rgba(4, 17, 138, 0.93), rgba(14, 29, 92, 0.9)),
+    linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(79, 70, 229, 0.9) 50%, rgba(139, 92, 246, 0.85) 100%),
     url('/background.png');
   background-size: cover;
   background-position: center;
-  min-height: 90vh; // Altura ajustada ligeiramente após remover os cards
+  min-height: 90vh;
   width: 100%;
   color: white;
   padding: 20px;
@@ -83,6 +83,7 @@ const HeroSectionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center; // Centraliza o conteúdo
+  position: relative;
 `;
 
 const HeroContent = styled.div`
@@ -94,6 +95,7 @@ const HeroContent = styled.div`
   padding: 60px 20px;
   flex-wrap: wrap;
   gap: 40px;
+  position: relative;
 `;
 
 const TextContainer = styled.div`
@@ -107,7 +109,10 @@ const SideImage = styled.img`
   max-width: 500px;
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+  &:hover { transform: translateY(-10px); }
 `;
 
 const Title = styled.h1`
@@ -115,6 +120,9 @@ const Title = styled.h1`
   font-weight: bold;
   margin-bottom: 15px;
   line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   @media (max-width: 768px) { font-size: 2rem; }
 `;
 
@@ -122,6 +130,7 @@ const Subtitle = styled.p`
   font-size: 1.1rem;
   margin-bottom: 30px;
   line-height: 1.6;
+  opacity: 0.95;
   @media (max-width: 768px) { font-size: 1rem; }
 `;
 
@@ -134,27 +143,36 @@ const ButtonGroup = styled.div`
 `;
 
 const GreenButton = styled(Link)`
-  background-color: #00C853;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 50px;
   padding: 12px 24px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
-  &:hover { background-color: #00b34a; }
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  &:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+  }
 `;
 
 const WhiteButton = styled(Link)`
-  background-color: white;
-  color: #040a3d;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: white;
   border: none;
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
   padding: 12px 24px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
-  &:hover { background-color: #e6e6e6; }
+  transition: all 0.3s ease;
+  &:hover { 
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
 `;
 
 // Os componentes de Features (Features, FeatureCard, FeatureIcon) foram removidos.
@@ -190,8 +208,9 @@ const InfoCardsWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #f8fafc;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   padding: 60px 20px;
+  position: relative;
 `;
 
 const InfoCardsContainer = styled.div`
@@ -212,7 +231,9 @@ const InfoTitleSection = styled.div`
 const InfoMainTitle = styled.h2`
   font-size: 28px;
   font-weight: 600;
-  color: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1.4;
   max-width: 600px;
   margin: 0 auto;
@@ -228,17 +249,35 @@ const InfoGridContainer = styled.div`
 `;
 
 const InfoCard = styled.div`
-  background: #22c55e;
-  border-radius: 20px;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border-radius: 24px;
   padding: 24px;
   display: flex;
   align-items: center;
   gap: 16px;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4);
+    
+    &::before {
+      left: 100%;
+    }
   }
 `;
 
@@ -277,7 +316,8 @@ function InfoCardsSection() {
 // SEÇÃO 2: RANKING DE EJS
 // ===============================================
 const RankingPageWrapper = styled.div`
-  background: linear-gradient(to bottom right, rgba(4, 17, 138, 0.93), rgba(14, 29, 92, 0.9)), url('/background.png');
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(79, 70, 229, 0.9) 50%, rgba(139, 92, 246, 0.85) 100%), 
+              url('/background.png');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -291,6 +331,7 @@ const RankingPageWrapper = styled.div`
   justify-content: center;
   padding: 80px 20px;
   text-align: center;
+  position: relative;
 `;
 
 const TopSectionTitle = styled.h2`
@@ -300,7 +341,7 @@ const TopSectionTitle = styled.h2`
   margin-bottom: 30px;
   text-align: center;
   width: 100%;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -325,37 +366,43 @@ const CardWrapper = styled.div`
 
 const MedalBadge = styled.div`
   position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 50px;
-  height: 60px;
+  top: -10px;
+  left: -10px;
+  width: 60px;
+  height: 70px;
   z-index: 5;
   img { width: 100%; height: 100%; object-fit: contain; }
 `;
 
 const EJCard = styled.div`
   background: ${({ $rank }) =>
-    $rank === 1 ? 'linear-gradient(to bottom, #FFF3AA 0%, #FFDE4D 100%)' :
-    $rank === 2 ? 'linear-gradient(to bottom, #F5F5F5 0%, #E0E0E0 100%)' :
-    $rank === 3 ? 'linear-gradient(to bottom, #FFBF7A 0%, #FFA645 100%)' :
+    $rank === 1 ? 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)' :
+    $rank === 2 ? 'linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%)' :
+    $rank === 3 ? 'linear-gradient(135deg, #CD7F32 0%, #8B4513 100%)' :
     placeholderColors.cardBackground};
-  border-radius: 10px;
+  border-radius: 24px;
   padding: 18px;
   text-align: center;
   color: ${placeholderColors.textPrimary};
   width: 100%;
   max-width: 280px;
   height: 380px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   transform: ${({ $rank }) => $rank === 1 ? 'translateY(-20px) scale(1.03)' : 'scale(1.03)'};
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
   z-index: ${({ $rank }) => $rank === 1 ? '2' : '1'};
   overflow: visible;
-  &:hover { transform: ${({ $rank }) => $rank === 1 ? 'translateY(-20px) scale(1.05)' : 'scale(1.05)'}; }
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  &:hover { 
+    transform: ${({ $rank }) => $rank === 1 ? 'translateY(-25px) scale(1.08)' : 'translateY(-5px) scale(1.08)'};
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  }
 `;
 
 const CardAvatarContainer = styled.div`
@@ -369,7 +416,7 @@ const CardAvatarContainer = styled.div`
   position: relative;
   overflow: hidden;
   background-color: #71C9CE;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 `;
 
 const CardAvatar = styled.div`
@@ -400,7 +447,7 @@ const CardPointsLabel = styled.div`
 const CardSeparator = styled.hr`
   width: 90%;
   height: 2px;
-  background-color: ${placeholderColors.cardSeparator};
+  background: linear-gradient(90deg, transparent, ${placeholderColors.cardSeparator}, transparent);
   margin: 8px 0;
   border: none;
 `;
@@ -414,8 +461,8 @@ const CardEJName = styled.div`
 
 const CardUniversity = styled.div`
   background-color: transparent;
-  border: 1px solid #333;
-  border-radius: 24px;
+  border: 2px solid rgba(51, 51, 51, 0.3);
+  border-radius: 50px;
   padding: 4px 14px;
   font-size: 0.85em;
   margin-bottom: 12px;
@@ -424,10 +471,10 @@ const CardUniversity = styled.div`
 `;
 
 const CardButton = styled.button`
-  background-color: ${placeholderColors.navyButtonBg};
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
   color: ${placeholderColors.buttonTextColor};
   border: none;
-  border-radius: 12px;
+  border-radius: 50px;
   padding: 8px 12px;
   font-weight: bold;
   font-size: 0.9em;
@@ -438,19 +485,31 @@ const CardButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
+  }
 `;
 
 const RankingButton = styled.button`
-  background-color: #00C853;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   color: white;
   font-weight: bold;
   font-size: 1em;
   border: none;
-  border-radius: 40px;
+  border-radius: 50px;
   padding: 12px 28px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  &:hover { background-color: #00b34a; }
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  
+  &:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+  }
 `;
 
 function RankingSection() {
@@ -501,17 +560,20 @@ function RankingSection() {
 // SEÇÃO 3: DEPOIMENTOS
 // ===============================================
 const TestimonialsSectionContainer = styled.section`
-  padding: 80px 20px; 
-  background-color: #f0f6f9;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   text-align: center;
   color: #343a40;
+  position: relative;
 `;
 
 const TestimonialsSectionTitle = styled.h2`
   text-align: center;
   font-size: 24px;
   font-weight: 600;
-  color: #061380;
+  background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 30px;
 `;
 
@@ -536,6 +598,7 @@ const TestimonialAvatar = styled.div`
 
 const AvatarIcon = styled.div`
   background: #5ACAE4;
+  background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -543,6 +606,7 @@ const AvatarIcon = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
 `;
 
 const AvatarImage = styled.img`
@@ -553,13 +617,15 @@ const AvatarImage = styled.img`
 `;
 
 const TestimonialBubble = styled.div`
-  background: #4C40FF;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
   color: #ffffff;
-  border-radius: 25px;
+  border-radius: 20px;
   padding: 15px 20px;
   position: relative;
   max-width: 400px;
   text-align: left;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+  
   &::before {
     content: '';
     position: absolute;
@@ -569,7 +635,7 @@ const TestimonialBubble = styled.div`
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 10px solid #4C40FF;
+    border-right: 10px solid #6366F1;
   }
 `;
 
@@ -606,7 +672,8 @@ function TestimonialsSection() {
 // SEÇÃO 4: CHAMADA PARA AÇÃO (CTA)
 // ===============================================
 const CallToActionSectionContainer = styled.section`
-  background: linear-gradient(to bottom right, rgba(4, 17, 138, 0.93), rgba(14, 29, 92, 0.9)), url('/background.png');
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(79, 70, 229, 0.9) 50%, rgba(139, 92, 246, 0.85) 100%), 
+              url('/background.png');
   background-size: cover;
   background-position: center;
   padding: 100px 20px; 
@@ -617,6 +684,7 @@ const CallToActionSectionContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 const CtaContainer = styled.div`
@@ -629,12 +697,14 @@ const CtaTitle = styled.h2`
   font-weight: 600;
   margin-bottom: 20px;
   line-height: 1.3;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
 `;
 
 const CtaSubtitle = styled.p`
   font-size: 34px;
   margin-bottom: 15px;
   line-height: 1.4;
+  opacity: 0.95;
 `;
 
 const CtaDescription = styled.p`
@@ -654,7 +724,7 @@ const StepText = styled.p`
 `;
 
 const HighlightGreen = styled.span`
-  color: #22c55e;
+  color: #10B981;
 `;
 
 function CallToActionSection() {
@@ -677,11 +747,12 @@ function CallToActionSection() {
 // SEÇÃO 5: FOOTER
 // ===============================================
 const FooterContainer = styled.footer`
-  background: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   padding: 40px 20px 20px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(226, 232, 240, 0.5);
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 `;
 
 const FooterContent = styled.div`
@@ -705,13 +776,14 @@ const FooterLogo = styled.div`
   gap: 10px;
   font-weight: 600;
   margin-bottom: 20px;
+  color: #1e293b;
 `;
 
 const LogoPlaceholder = styled.div`
   width: 30px;
   height: 30px;
-  background: #1e3a8a;
-  border-radius: 6px;
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -746,20 +818,27 @@ const NewsletterInput = styled.input`
   flex: 1;
   padding: 10px 12px;
   border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border-radius: 12px;
   font-size: 14px;
+  transition: border-color 0.3s ease;
+  &:focus { border-color: #3B82F6; outline: none; }
 `;
 
 const NewsletterButton = styled.button`
-  background: #1e3a8a;
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 6px;
+  border-radius: 12px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  &:hover { background: #1e40af; }
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+  
+  &:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+  }
 `;
 
 const FooterBottom = styled.div`
@@ -768,7 +847,7 @@ const FooterBottom = styled.div`
   align-items: center;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(226, 232, 240, 0.5);
   font-size: 14px;
   color: #64748b;
   max-width: 1000px;
