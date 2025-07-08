@@ -220,24 +220,10 @@ const TopSectionTitle = styled.h2`
     text-align: center;
     width: 100%;
     text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    
-    img {
-        height: 32px;
-        width: 32px;
-    }
     
     @media (max-width: 480px) {
         font-size: 1.5em;
         margin-bottom: 25px;
-        
-        img {
-            height: 28px;
-            width: 28px;
-        }
     }
 `;
 
@@ -831,8 +817,7 @@ export default function Ranking() {
                     {!searchTerm && (
                         <TopSection>
                             <TopSectionTitle>
-                                EJs no topo 
-                                <img src="https://symbl-cdn.com/i/webp/2c/03b9fa8c34887a1cc88796688c76f1.webp" alt="Medal" />
+                                EJs no topo
                             </TopSectionTitle>
                             <CardsContainer>
                                 {topEJs.map((ej) => (

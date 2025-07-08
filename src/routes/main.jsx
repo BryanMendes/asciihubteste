@@ -281,10 +281,6 @@ const InfoCard = styled.div`
   }
 `;
 
-const InfoCardIcon = styled.div`
-  font-size: 32px;
-  flex-shrink: 0;
-`;
 
 const InfoCardText = styled.p`
   color: #ffffff;
@@ -302,10 +298,10 @@ function InfoCardsSection() {
                     <InfoMainTitle>A plataforma definitiva para Empresas Juniores, universitários e talentos engajados.</InfoMainTitle>
                 </InfoTitleSection>
                 <InfoGridContainer>
-                    <InfoCard><InfoCardIcon>👥</InfoCardIcon><InfoCardText>Conecte-se com universitários talentosos e empresas juniores em todo o Brasil.</InfoCardText></InfoCard>
-                    <InfoCard><InfoCardIcon>🤝</InfoCardIcon><InfoCardText>Trabalhe em projetos conjuntos, faça conexões reais e aprenda com quem vive os mesmos desafios que você.</InfoCardText></InfoCard>
-                    <InfoCard><InfoCardIcon>👁️</InfoCardIcon><InfoCardText>Mostre o que sua EJ faz de melhor.</InfoCardText></InfoCard>
-                    <InfoCard><InfoCardIcon>📊</InfoCardIcon><InfoCardText>Acompanhe o desempenho da sua EJ em tempo real.</InfoCardText></InfoCard>
+                    <InfoCard><InfoCardText>Conecte-se com universitários talentosos e empresas juniores em todo o Brasil.</InfoCardText></InfoCard>
+                    <InfoCard><InfoCardText>Trabalhe em projetos conjuntos, faça conexões reais e aprenda com quem vive os mesmos desafios que você.</InfoCardText></InfoCard>
+                    <InfoCard><InfoCardText>Mostre o que sua EJ faz de melhor.</InfoCardText></InfoCard>
+                    <InfoCard><InfoCardText>Acompanhe o desempenho da sua EJ em tempo real.</InfoCardText></InfoCard>
                 </InfoGridContainer>
             </InfoCardsContainer>
         </InfoCardsWrapper>
@@ -342,11 +338,6 @@ const TopSectionTitle = styled.h2`
   text-align: center;
   width: 100%;
   text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  img { height: 32px; width: 32px; }
 `;
 
 const CardsContainer = styled.div`
@@ -527,7 +518,7 @@ function RankingSection() {
   return (
     <RankingPageWrapper>
       <TopSectionTitle>
-        EJs no topo <img src="https://symbl-cdn.com/i/webp/2c/03b9fa8c34887a1cc88796688c76f1.webp" alt="Medalha" />
+        EJs no topo
       </TopSectionTitle>
       <CardsContainer>
         {topEJs.map((ej) => (

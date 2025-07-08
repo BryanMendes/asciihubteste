@@ -10,7 +10,7 @@ const Page = styled.div`
   min-height: 100vh;
   width: 100vw;
   color: white;
-  padding: 20px;
+  padding: 100px 20px 20px;
   font-family: 'Arial', sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -20,6 +20,10 @@ const Page = styled.div`
   background-position: center;
   background-attachment: fixed;
   position: relative;
+  
+  @media (max-width: 768px) {
+    padding: 120px 20px 20px;
+  }
 `;
 
 const Container = styled.div`
