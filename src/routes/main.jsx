@@ -54,6 +54,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   padding-top: 80px; /* Adiciona espaço para o header fixo */
 `;
 
 const MainContentWrapper = styled.main`
@@ -61,8 +62,6 @@ const MainContentWrapper = styled.main`
   width: 100%;
   box-sizing: border-box;
 `;
-
-// Header e seus estilos foram removidos daqui.
 
 // ===============================================
 // SEÇÃO 0: HERO
@@ -73,7 +72,7 @@ const HeroSectionWrapper = styled.div`
     url('/background.png');
   background-size: cover;
   background-position: center;
-  min-height: 90vh;
+  min-height: calc(90vh - 80px); /* Ajusta altura considerando o header */
   width: 100%;
   color: white;
   padding: 20px;
